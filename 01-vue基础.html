@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 1.开发环境版本 包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <div id="app">
+        <!-- 3.模板语法 -->
+        {{message}}
+    </div>
+
+    <script>
+        var app = new Vue({//2.创建vue实例
+            el:'#app',//3.选择器 el挂载点 通过css选择器设置vue实例，替换命中的双大括号中的数据
+            data:{//3.数据
+                message:"Hello Vue! 你好 vue！"
+            }
+        }
+        )
+    </script>
+</body>
+
+</html>
