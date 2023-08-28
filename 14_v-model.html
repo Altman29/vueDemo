@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="button" value="修改msg" @click="setM">
+        <input type="text" v-model="msg" @keyup.enter="getM">
+
+        <h2>{{msg}}</h2>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                msg: "大罗金仙"
+            },
+            methods: {
+                getM: function () {
+                    alert(this.msg)
+                },
+                setM: function () {
+                    this.msg = "赤脚大仙"
+                }
+            }
+        })
+    </script>
+
+    <!-- 
+        v-model指令的作用是便捷的设置和获取表单元素的值
+        绑定的数据会和表单元素值相关联
+        绑定的数据和表单元素的值是 双向绑定
+     -->
+</body>
+
+</html>

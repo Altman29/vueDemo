@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>记事本应用</h2>
+        <input type="text" v-model="note" placeholder="请输入任务" @keyup.enter="addNote">
+        <ul>
+            <li v-for="(item,index) in list">
+                {{index+1}}{{"\t"+item}} <button v-show="true" @click="delNode(index)">x</button>
+            </li>
+        </ul>
+        <a href="javascript:void(0)" v-if="list.length!=0">{{list.length}} left</a>
+        <a href="javascript:void(0)" v-show="list.length!=0" style="margin-left: 80px;" @click="clear">clear</a>
+    </div>
+
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                note: "好好学习，天天向上",
+                list: ["写代码", "吃饭饭", "打豆豆"]
+            },
+            methods: {
+                addNote: function () {
+                    this.list.push(this.note)
+                },
+                delNode: function (index) {
+                    this.list.splice(index, 1)
+                },
+                clear: function () {
+                    this.list = []
+                }
+            }
+        })
+    </script>
+
+    <!-- 
+        1.新增
+            1.生成列表结构 v-for 数组
+            2.获取用户输入 v-model
+            3.回车，新增数据 @keyup.enter 数组新增：array.push(it) 
+        2.删除
+            数组删除 array.splice(索引,个数)
+            数据改变，和数据绑定的元素同步改变
+        3.统计
+            array.length 数组的个数
+        4.清空
+            数组情况 array=[]
+        5.隐藏
+            v-if 或 v-show都可以 数组非空就显示
+
+        理解基于数据的开发方式，而不是以前基于dom的方式
+     -->
+</body>
+
+</html>
