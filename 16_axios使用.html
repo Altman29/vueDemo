@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- vue调试库 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- axios网络库 -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <input type="button" value="get请求" @click="get">
+        <input type="button" value="post请求" @click="post">
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+            },
+            methods: {
+                get: function () {
+                    axios.get("https://autumnfish.cn/api/joke/list?num=3")
+                        .then(function (reponse) {
+                            console.log(reponse)
+                        }, function (err) {
+                            console.log(err)
+                        })
+                },
+                post: function () {
+                    axios.post("https://autumnfish.cn/api/user/reg", { username: "jack" })
+                        .then(function (reponse) {
+                            console.log(reponse)
+                        }, function (err) {
+                            console.log(err)
+                        })
+                }
+            }
+        })
+    </script>
+
+    <!-- 
+        axios.get(地址?key=value&key2=value2).then(function(response){}, function(err){})
+        axios.post(地址,{key:value,key2:vlaue2}).then(function(response){},function(err){})
+        示例接口
+        get https://autumnfish.cn/api/joke/list
+        params: num 数字
+
+        post https://autumnfish.cn/api/user/reg
+        params: username
+
+        
+     -->
+</body>
+
+</html>
