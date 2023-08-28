@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="button" value="添加数据" @click="add">
+        <input type="button" value="移除数据" @click="remove">
+        <ul>
+            <li v-for="(it,index) in arr">
+                {{index+1}} 极度帅气: {{it}}
+            </li>
+        </ul>
+
+        <h2 v-for="it in objArr" v-bind:title="it.name">
+            {{it.name}}
+        </h2>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                arr: ["aaa", "bbb", "ccc", "ddd", "eee"],
+                objArr: [
+                    { name: "jack" },
+                    { name: "rose" }
+                ]
+            },
+            methods: {
+                add: function () {
+                    this.objArr.push({ name: "biubiu" });
+                    // push 追加
+                },
+                remove: function () {
+                    // this.objArr.shift();
+                    // shift 移除最左边
+                    this.objArr.pop();
+                    // pop 移除最右边，尾部
+                }
+            }
+        })
+    </script>
+
+    <!-- 
+        v-for指令的作用是根据数据生成列表结构
+        数组经常和v-for结合使用
+        语法是(item,index) in 数据
+        item和index可以结合其他指令一起使用
+        数组长度的更新会同步到页面上，是响应式的
+     -->
+</body>
+
+</html>
