@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <input type="button" value="-" @click="decrement">
+        <span>{{num}}</span>
+        <input type="button" value="+" @click="increment">
+    </div>
+     
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                num:0
+            },
+            methods:{
+                increment:function(){
+                    if(this.num>=5) alert("别点了！不能大于5啊");
+                    else this.num++;
+                    
+                },
+                decrement:function(){
+                    if(this.num<=0) alert("别点了！不能小于0啊");
+                    else this.num--;
+                }
+            }
+        })
+    </script>
+
+    <!-- 
+        创建Vue实例时：el（挂载点）、data（数据）、methods（方法）
+        v-on指令的作用是绑定事件，简写为@
+        方法中通过this关键字获取data中的数据
+        v-text指令的作用是设置元素的文本值，简写为{{}}
+     -->
+</body>
+</html>

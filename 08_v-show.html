@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- <img src="/imgs/touxaing.png" width="200" height="300" v-show="false"> -->
+        <input type="button" value="切换显示状态" @click="changeIsShow">
+        <img src="/imgs/touxaing.png" width="200" height="300" v-show="isShow">
+        <img src="/imgs/touxaing.png" width="200" height="300" v-show="age>=18">
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                isShow: true,
+                age: 11
+            },
+            methods:{
+                changeIsShow:function(){
+                    this.isShow=!this.isShow;
+                }
+            }
+        })
+    </script>
+
+    <!-- 
+        v-show指令的作用是根据切换元素的显示状态
+        原理是修改元素的display，实现显示隐藏
+        指令后面的内容，最终都会解析为 布尔值
+        值为true元素显示，值为false元素隐藏
+        数据改变后，对应元素的显示状态会同步更新
+     -->
+</body>
+</html>

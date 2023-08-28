@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+     <div id="app">
+        <h2 v-text="msg+'!sss'">北京</h2>
+        <h2 v-text="info+' aaa'">北京</h2>
+        <h2>{{msg+'111'}}北京</h2>
+     </div>
+
+     <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                msg:"hello vue!!!",
+                info:"infossss"
+            }
+        })
+     </script>
+
+     <!-- 
+        v-text
+        v-text指令的作用是设置标签的内容(textContent)
+        默认写法会替换全部内容，使用差值表达式{{}}可以替换指定内容
+      -->
+</body>
+</html>
