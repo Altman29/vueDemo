@@ -13,20 +13,27 @@
 <body>
     <div id="app">
 
-        <input type="button" value="get请求" @click="get">
+        <input type="button" value="get请求" @click="getJoke">
         <input type="button" value="post请求" @click="post">
+
+        <p>{{joke}}</p>
     </div>
 
     <script>
         var app = new Vue({
             el: '#app',
             data: {
+                joke: "很好笑的笑话"
             },
             methods: {
-                get: function () {
-                    axios.get("https://autumnfish.cn/api/joke/list?num=3")
+                getJoke: function () {
+                    console.log(this.joke)
+                    var that = this
+                    axios.get("https://autumnfish.cn/api/joke")
                         .then(function (reponse) {
-                            console.log(reponse)
+                            console.log(reponse.data)
+                            // this.joke = reponse.data
+                            that.joke = reponse.data
                         }, function (err) {
                             console.log(err)
                         })
@@ -53,7 +60,10 @@
         post https://autumnfish.cn/api/user/reg
         params: username
 
-        
+        axios回调函数中的this已经改变，无法访问到data中数据
+        把this保存起来，回调函数中直接使用保存的this即可（that）
+        和本地应用的最大区别就是改变了数据来源
+
      -->
 </body>
 
